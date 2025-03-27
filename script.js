@@ -13,7 +13,7 @@ function openEnvelope() {
 
 // Function to generate hearts
 function generateHearts() {
-    let heartCount = 10; // Increased number of hearts for a fuller screen
+    let heartCount = 10; // Increased size of hearts for a fuller screen
     for (let i = 0; i < heartCount; i++) {
         createHeart();
     }
@@ -27,7 +27,7 @@ function createHeart() {
 
     const size = Math.random() * 60 + 60; // Random size for each heart
     const startX = Math.random() * window.innerWidth;
-    const startY = window.innerHeight; // Start from the bottom of the screen
+    const startY = window.innerHeight; // Start from inside the envelope
 
     heart.style.left = `${startX}px`;
     heart.style.top = `${startY}px`;
