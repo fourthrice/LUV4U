@@ -96,7 +96,7 @@ body, html {
     width: 60px;
     height: 60px;
     background-color: red;
-    clip-path: polygon(50% 0%, 0% 38%, 50% 100%, 100% 38%, 50% 0%);
+    clip-path: heart(50% 0%, 0% 38%, 50% 100%, 100% 38%, 50% 0%);
     animation: heartAnimation 5s ease-out infinite;
     z-index: 2;
 }
