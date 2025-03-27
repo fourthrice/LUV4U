@@ -2,7 +2,7 @@ function openEnvelope() {
     document.getElementById("envelope").classList.add("open");
     setTimeout(() => {
         document.getElementById("message").style.display = "block";
-        setInterval(createHeart, 500);
+        setInterval(createHeart, 300);
     }, 1000);
 }
 
@@ -16,5 +16,5 @@ function createHeart() {
     
     setTimeout(() => {
         heart.remove();
-    }, 3000);
+    }, 5000);
 } 
