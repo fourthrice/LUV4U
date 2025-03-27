@@ -60,5 +60,48 @@
             width: 20px;
             height: 20px;
             background-color: red;
-            clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20%
+            clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+            animation: floatUp 3s ease-in infinite;
+            opacity: 0;
         }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="envelope">
+        <div class="heart"></div>
+        <div class="letter">
+            <p>Dear [Name],</p>
+            <p>I just wanted to send you a little love today! 💖</p>
+            <p>Yours, [Your Name]</p>
+        </div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("floating-heart");
+            document.body.appendChild(heart);
+            
+            const randomX = Math.random() * window.innerWidth;
+            heart.style.left = `${randomX}px`;
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html> 
