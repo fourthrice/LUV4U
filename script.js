@@ -87,6 +87,7 @@ body, html {
     right: 0;
     bottom: 0;
     pointer-events: none;
+    z-index: 1;
 }
 
 .heart {
@@ -96,6 +97,7 @@ body, html {
     background-color: red;
     clip-path: polygon(50% 0%, 0% 38%, 100% 38%);
     animation: heartAnimation 3s ease-out forwards;
+    z-index: 2;
 }
 
 @keyframes heartAnimation {
