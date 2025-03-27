@@ -1,131 +1,89 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
     background-color: black;
-    overflow: hidden;
-    flex-direction: column;
-}
-
-#envelope-container {
-    position: relative;
-    cursor: pointer;
-}
-
-#envelope {
-    position: relative;
-    width: 280px;
-    height: 180px;
-    background-color: white;
-    border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    transition: transform 1s ease-in-out;
+    font-family: 'Special Elite', sans-serif;
+    overflow: hidden;
 }
 
-#flap {
+.envelope-container {
+    position: relative;
+    width: 400px;
+    height: 250px;
+}
+
+.envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.flap {
+    width: 100%;
+    height: 40%;
+    background-color: white;
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    border-left: 140px solid transparent;
-    border-right: 140px solid transparent;
-    border-bottom: 90px solid white;
-    transform-origin: top;
-    transition: transform 1s ease-in-out;
-}
-
-#letter {
-    width: 240px;
-    height: 120px;
-    background-color: white;
-    border-radius: 4px;
-    text-align: center;
-    font-family: 'Special Elite', cursive;
-    font-size: 18px;
-    color: black;
-    display: none;
+    transform-origin: bottom;
+    transform: rotateX(0deg);
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#front-text {
+.to {
+    font-size: 24px;
+    color: black;
+    z-index: 2;
+}
+
+.letter {
     position: absolute;
+    top: 40%;
+    text-align: center;
+    display: none;
+}
+
+.message {
     font-size: 20px;
     color: black;
-    font-family: 'Special Elite', cursive;
-    top: 50px;
-    transition: opacity 0.5s ease-in-out;
+    margin-bottom: 10px;
 }
 
-/* Hide text when opened */
-.open #front-text {
-    opacity: 0;
+.from {
+    font-size: 20px;
+    color: black;
 }
 
-/* Make the flap open */
-.open #flap {
-    transform: rotateX(180deg);
-}
-
-/* Show the letter inside */
-.open #letter {
-    display: flex;
-}
-
-/* Heart styles */
-.heart {
+#hearts-container {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    transform: rotate(-45deg);
-    animation: floatUp 5s ease-in-out infinite;
-    opacity: 0;
-}
-
-/* Perfect heart shape */
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    border-radius: 50%;
-}
-
-.heart::before {
-    top: -15px;
-    left: 0;
-}
-
-.heart::after {
-    left: 15px;
     top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
 }
 
-/* Hearts get bigger faster */
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1) rotate(-45deg);
-        opacity: 1;
-    }
-    25% {
-        transform: translateY(-100px) scale(4) rotate(-45deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(-200px) scale(8) rotate(-45deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-300px) scale(12) rotate(-45deg);
-        opacity: 0;
+@media screen and (max-width: 768px) {
+    .envelope-container {
+        width: 300px;
+        height: 200px;
     }
 } 
