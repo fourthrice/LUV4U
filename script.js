@@ -13,7 +13,7 @@ function openEnvelope() {
 
 // Function to generate hearts
 function generateHearts() {
-    let heartCount = 10;
+    let heartCount = 5; // Keep fewer hearts to make them bigger
     for (let i = 0; i < heartCount; i++) {
         createHeart();
     }
@@ -25,7 +25,7 @@ function createHeart() {
     heart.classList.add('heart');
     heartsContainer.appendChild(heart);
 
-    const size = Math.random() * 50 + 50; // Random size for each heart
+    const size = Math.random() * 60 + 60; // Random size for each heart
     const startX = Math.random() * window.innerWidth;
     const startY = Math.random() * window.innerHeight;
     const endSize = size * 2;
@@ -36,8 +36,9 @@ function createHeart() {
     heart.style.width = `${size}px`;
     heart.style.height = `${size}px`;
     heart.style.backgroundColor = 'red';
-    heart.style.borderRadius = '50%';
-
+    heart.style.clipPath = 'polygon(50% 0%, 0% 38%, 100% 38%)';
+    heart.style.transformOrigin = 'center';
+    
     // Animation for hearts
     heart.animate([
         {
@@ -62,4 +63,4 @@ function createHeart() {
 }
 
 // Trigger the envelope opening after a short delay
-setTimeout(openEnvelope, 2000);
+setTimeout(openEnvelope, 2000); 
