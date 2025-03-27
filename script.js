@@ -1,8 +1,9 @@
 function openEnvelope() {
     document.getElementById("envelope").classList.add("open");
+    
     setTimeout(() => {
-        document.getElementById("message").style.display = "block";
-        setInterval(createHeart, 300);
+        document.getElementById("letter").style.display = "flex";
+        setInterval(createHeart, 150); // More frequent hearts
     }, 1000);
 }
 
