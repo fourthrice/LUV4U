@@ -1,119 +1,42 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+const flap = document.querySelector('.flap');
+const toText = document.querySelector('.to');
+const letter = document.querySelector('.letter');
+const heartsContainer = document.getElementById('hearts-container');
+
+// Function to animate flap opening
+function openEnvelope() {
+    flap.style.transform = 'rotateX(180deg)';
+    toText.style.display = 'none';
+    letter.style.display = 'block';
+    generateHearts();
 }
 
-body, html {
-    height: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Special Elite', sans-serif;
-    overflow: hidden;
-}
-
-.envelope-container {
-    position: relative;
-    width: 400px;
-    height: 250px;
-}
-
-.envelope {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.flap {
-    width: 100%;
-    height: 40%;
-    background-color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: bottom;
-    transform: rotateX(0deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.to {
-    font-size: 24px;
-    color: black;
-    z-index: 2;
-}
-
-.letter {
-    position: absolute;
-    top: 40%;
-    text-align: center;
-    display: none;
-}
-
-.letter-paper {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-}
-
-.message {
-    font-size: 20px;
-    color: black;
-    margin-bottom: 10px;
-}
-
-.from {
-    font-size: 20px;
-    color: black;
-}
-
-#hearts-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.heart {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-color: red;
-    clip-path: polygon(50% 0%, 0% 38%, 100% 38%);
-    animation: heartAnimation 3s ease-out forwards;
-    z-index: 2;
-}
-
-@keyframes heartAnimation {
-    0% {
-        opacity: 1;
-        transform: scale(1) translateY(0) translateX(0);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(2) translateY(-500px) translateX(-200px);
+// Function to generate hearts
+function generateHearts() {
+    let heartCount = 5; // Keep fewer hearts to make them bigger
+    for (let i = 0; i < heartCount; i++) {
+        createHeart();
     }
 }
 
-@media screen and (max-width: 768px) {
-    .envelope-container {
-        width: 300px;
-        height: 200px;
-    }
-} 
+// Function to create a heart
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heartsContainer.appendChild(heart);
+
+    const size = Math.random() * 60 + 60; // Random size for each heart
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+
+    heart.style.left = `${startX}px`;
+    heart.style.top = `${startY}px`;
+    heart.style.width = `${size}px`;
+    heart.style.height = `${size}px`;
+
+    // Animation for hearts
+    heart.style.animationDuration = `${Math.random() * 2 + 2}s`; // Randomize heart speed
+}
+
+// Trigger the envelope opening after a short delay
+setTimeout(openEnvelope, 2000);
