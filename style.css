@@ -8,6 +8,11 @@ body {
     flex-direction: column;
 }
 
+#envelope-container {
+    position: relative;
+    cursor: pointer;
+}
+
 #envelope {
     position: relative;
     width: 280px;
@@ -35,12 +40,18 @@ body {
     transition: transform 1s ease-in-out;
 }
 
-.closed #flap {
-    transform: rotateX(0deg);
-}
-
-.open #flap {
-    transform: rotateX(180deg);
+#letter {
+    width: 240px;
+    height: 120px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    color: black;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 #front-text {
@@ -52,35 +63,69 @@ body {
     transition: opacity 0.5s ease-in-out;
 }
 
+/* Hide text when opened */
 .open #front-text {
-    opacity: 0;  /* Hides "for, krish" when opened */
+    opacity: 0;
 }
 
-#message {
-    display: none;
-    text-align: center;
-    color: black;
-    font-size: 18px;
-    font-family: 'Special Elite', cursive;
+/* Make the flap open */
+.open #flap {
+    transform: rotateX(180deg);
 }
 
+/* Show the letter inside */
+.open #letter {
+    display: flex;
+}
+
+/* Heart styles */
 .heart {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     background-color: red;
-    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+    transform: rotate(-45deg);
     animation: floatUp 5s ease-in-out infinite;
     opacity: 0;
 }
 
+/* Perfect heart shape */
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -15px;
+    left: 0;
+}
+
+.heart::after {
+    left: 15px;
+    top: 0;
+}
+
+/* Hearts get bigger faster */
 @keyframes floatUp {
     0% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0) scale(1) rotate(-45deg);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(-100px) scale(4) rotate(-45deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-200px) scale(8) rotate(-45deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(-300px) scale(3);
+        transform: translateY(-300px) scale(12) rotate(-45deg);
         opacity: 0;
     }
 } 
